@@ -6,6 +6,7 @@ import web.dao.UserDao;
 import web.model.User;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -28,14 +29,15 @@ public class UserServiceImpl implements UserService {
         userDao.deleteUser(id);
     }
 
-
     @Override
     public List<User> getUsers() {
-        return new ArrayList<>(userDao.getUsers());
+        return userDao.getUsers();
     }
 
     @Override
     public User getUserById(Integer id) {
         return userDao.getUserById(id);
     }
+
+
 }

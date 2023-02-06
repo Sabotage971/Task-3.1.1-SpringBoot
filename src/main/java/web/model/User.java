@@ -6,17 +6,15 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "CRUD")
-
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name")
+
     @Size(min = 2, max = 50, message = "Имя должно быть не менее 2 и не более 50 знаков")
     private String name;
 
-    @Column(name = "email")
     private String email;
 
     public Integer getId() {
@@ -26,8 +24,6 @@ public class User {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    @Column(name = "age")
     @Min(value = 1, message = "Минимальный возраст не менее 1 года")
     private int age;
 

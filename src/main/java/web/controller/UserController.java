@@ -37,7 +37,7 @@ public class UserController {
         return "create";
     }
 
-    @PostMapping("/create")
+    @PutMapping("/create")
     public String createUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, ModelMap modelMap) {
         if (!bindingResult.hasErrors())
             userService.createUser(user);
@@ -60,8 +60,7 @@ public class UserController {
 
         return "create";
     }
-
-    @PostMapping("/edit")
+    @PutMapping("/edit")
     public String editUser(@RequestParam("id") Integer id, @ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
         if (!bindingResult.hasErrors())
             userService.updateUser(user);
@@ -75,8 +74,7 @@ public class UserController {
 
         return "redirect:/users";
     }
-
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public String deleteUser(@RequestParam(value = "id") Integer id) {
         userService.deleteUser(id);
 

@@ -6,10 +6,9 @@ import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
-
 @Repository
-@Transactional
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
@@ -37,14 +36,10 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-
-    @Transactional(readOnly = true)
     @Override
     public List<User> getUsers() {
-        return entityManager.createQuery("select u from User u", User.class).getResultList();
+        return new ArrayList<>(entityManager.createQuery("select u from User u", User.class).getResultList());
     }
-
-    @Transactional(readOnly = true)
     @Override
     public User getUserById(Integer id) {
         return entityManager.find(User.class, id);
